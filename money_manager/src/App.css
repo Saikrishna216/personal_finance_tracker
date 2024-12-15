@@ -10,7 +10,7 @@
 }
 .signup-signin-container {
   width: 30vw;
-  min-width: 400px;
+  min-width: 400px; 
   border-radius: 1rem;
   padding: 2rem;
 }

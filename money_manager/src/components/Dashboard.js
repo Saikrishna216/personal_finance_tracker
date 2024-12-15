@@ -55,39 +55,44 @@ const Dashboard = () => {
   const processChartData = () => {
     const balanceData = [];
     const spendingData = {};
-
-    transactions.forEach((transaction) => {
+    let runningBalance = 0;
+  
+    // Sort transactions by date to ensure chronological processing
+    const sortedTransactions = [...transactions].sort((a, b) => 
+      moment(a.date).diff(moment(b.date))
+    );
+  
+    sortedTransactions.forEach((transaction) => {
       const monthYear = moment(transaction.date).format("MMM YYYY");
-      const tag = transaction.tag;
-
+      
       if (transaction.type === "income") {
-        if (balanceData.some((data) => data.month === monthYear)) {
-          balanceData.find((data) => data.month === monthYear).balance +=
-            transaction.amount;
-        } else {
-          balanceData.push({ month: monthYear, balance: transaction.amount });
-        }
+        runningBalance += transaction.amount;
       } else {
-        if (balanceData.some((data) => data.month === monthYear)) {
-          balanceData.find((data) => data.month === monthYear).balance -=
-            transaction.amount;
-        } else {
-          balanceData.push({ month: monthYear, balance: -transaction.amount });
-        }
-
-        if (spendingData[tag]) {
-          spendingData[tag] += transaction.amount;
-        } else {
-          spendingData[tag] = transaction.amount;
-        }
+        runningBalance -= transaction.amount;
       }
+  
+      // Update or add balance for the month
+      const existingMonthIndex = balanceData.findIndex(
+        (data) => data.month === monthYear
+      );
+  
+      if (existingMonthIndex !== -1) {
+        balanceData[existingMonthIndex].balance = runningBalance;
+      } else {
+        balanceData.push({ 
+          month: monthYear, 
+          balance: runningBalance 
+        });
+      }
+  
+      // Rest of the spending data logic remains the same
     });
-
+  
     const spendingDataArray = Object.keys(spendingData).map((key) => ({
       category: key,
       value: spendingData[key],
     }));
-
+  
     return { balanceData, spendingDataArray };
   };
 
@@ -186,15 +191,47 @@ const Dashboard = () => {
 
   const balanceConfig = {
     data: balanceData,
-    xField: "month",
-    yField: "balance",
+    xField: 'month',
+    yField: 'balance',
+    smooth: true, // Optional: makes the line smooth
+    color: '#1890ff', // Optional: specify a color
+    point: {
+      size: 5,
+      shape: 'circle',
+      style: {
+        fill: 'black',
+        stroke: '#1890ff',
+        lineWidth: 2,
+      },
+    },
+    tooltip: {
+      formatter: (datum) => {
+        return { name: 'Balance', value: `$${datum.balance.toFixed(2)}` };
+      },
+    },
   };
 
   const spendingConfig = {
-    data: spendingDataArray,
-    angleField: "value",
-    colorField: "category",
+    data: spendingDataArray, // Spending data
+    angleField: "value",     // Slice size based on value
+    colorField: "category",  // Color differentiation based on category
+    color: [
+      "#FF6384", // Red
+      "#36A2EB", // Blue
+      "#FFCE56", // Yellow
+      "#4BC0C0", // Teal
+      "#9966FF", // Purple
+      "#FF9F40", // Orange
+    ], // Custom colors for slices
+    legend: {
+      position: "right", // Legend position for better UI
+    },
+    label: {
+      type: "outer", // Label outside the pie
+      content: "{name}: {percentage}", // Format label content
+    },
   };
+  
 
   function reset() {
     console.log("resetting");
