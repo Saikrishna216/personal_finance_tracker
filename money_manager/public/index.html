@@ -15,6 +15,56 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+      /* Overall Page Styling */
+      body {
+          background-color: #000000; /* Light Aqua */
+          margin: 0;
+          font-family: Arial, sans-serif;
+      }
+
+      /* Title Styling */
+      .title {
+          font-family: 'Bungee Shade', cursive;
+          font-size: 3rem;
+          text-align: center;
+          color: #FF4081; /* Hot Pink */
+          margin: 20px 0;
+      }
+
+      /* Container for cards */
+      .container {
+          display: flex;
+          justify-content: space-around;
+          margin: 30px;
+      }
+
+      /* Card Styling */
+      .card {
+          background-color: #000000; /* White */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          padding: 20px;
+          text-align: center;
+          width: 250px;
+      }
+
+      /* Button Styling */
+      .btn {
+          background-color: #3A86FF; /* Electric Blue */
+          color: #FFFFFF; /* White */
+          border: none;
+          border-radius: 5px;
+          padding: 10px 15px;
+          font-size: 1rem;
+          cursor: pointer;
+          margin-top: 10px;
+      }
+
+      .btn:hover {
+          background-color: #2B65CC; /* Darker Blue on Hover */
+      }
+  </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,6 +79,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
