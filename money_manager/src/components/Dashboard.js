@@ -19,29 +19,6 @@ import { unparse } from "papaparse";
 const Dashboard = () => {
   const [user] = useAuthState(auth);
 
-  // const sampleTransactions = [
-  // {
-  //   name: "Pay day",
-  //   type: "income",
-  //   date: "2023-01-15",
-  //   amount: 2000,
-  //   tag: "salary",
-  // },
-  // {
-  //   name: "Dinner",
-  //   type: "expense",
-  //   date: "2023-01-20",
-  //   amount: 500,
-  //   tag: "food",
-  // },
-  // {
-  //   name: "Books",
-  //   type: "expense",
-  //   date: "2023-01-25",
-  //   amount: 300,
-  //   tag: "education",
-  // },
-  // ];
   const [isExpenseModalVisible, setIsExpenseModalVisible] = useState(false);
   const [isIncomeModalVisible, setIsIncomeModalVisible] = useState(false);
   const [transactions, setTransactions] = useState([]);
@@ -56,47 +33,53 @@ const Dashboard = () => {
     const balanceData = [];
     const spendingData = {};
     let runningBalance = 0;
-  
+
     // Sort transactions by date to ensure chronological processing
-    const sortedTransactions = [...transactions].sort((a, b) => 
+    const sortedTransactions = [...transactions].sort((a, b) =>
       moment(a.date).diff(moment(b.date))
     );
-  
+
     sortedTransactions.forEach((transaction) => {
       const monthYear = moment(transaction.date).format("MMM YYYY");
-      
+      const tag = transaction.tag;
+
       if (transaction.type === "income") {
         runningBalance += transaction.amount;
       } else {
         runningBalance -= transaction.amount;
+
+        if (spendingData[tag]) {
+          spendingData[tag] += transaction.amount;
+        } else {
+          spendingData[tag] = transaction.amount;
+        }
       }
-  
+
       // Update or add balance for the month
       const existingMonthIndex = balanceData.findIndex(
         (data) => data.month === monthYear
       );
-  
+
       if (existingMonthIndex !== -1) {
         balanceData[existingMonthIndex].balance = runningBalance;
       } else {
-        balanceData.push({ 
-          month: monthYear, 
-          balance: runningBalance 
+        balanceData.push({
+          month: monthYear,
+          balance: runningBalance,
         });
       }
-  
-      // Rest of the spending data logic remains the same
     });
-  
+
     const spendingDataArray = Object.keys(spendingData).map((key) => ({
       category: key,
       value: spendingData[key],
     }));
-  
+
     return { balanceData, spendingDataArray };
   };
 
   const { balanceData, spendingDataArray } = processChartData();
+
   const showExpenseModal = () => {
     setIsExpenseModalVisible(true);
   };
@@ -180,7 +163,6 @@ const Dashboard = () => {
       const querySnapshot = await getDocs(q);
       let transactionsArray = [];
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
         transactionsArray.push(doc.data());
       });
       setTransactions(transactionsArray);
@@ -191,51 +173,51 @@ const Dashboard = () => {
 
   const balanceConfig = {
     data: balanceData,
-    xField: 'month',
-    yField: 'balance',
-    smooth: true, // Optional: makes the line smooth
-    color: '#1890ff', // Optional: specify a color
+    xField: "month",
+    yField: "balance",
+    smooth: true,
+    color: "#1890ff",
     point: {
       size: 5,
-      shape: 'circle',
+      shape: "circle",
       style: {
-        fill: 'black',
-        stroke: '#1890ff',
+        fill: "black",
+        stroke: "#1890ff",
         lineWidth: 2,
       },
     },
     tooltip: {
       formatter: (datum) => {
-        return { name: 'Balance', value: `$${datum.balance.toFixed(2)}` };
+        return { name: "Balance", value: `$${datum.balance.toFixed(2)}` };
       },
     },
   };
 
   const spendingConfig = {
-    data: spendingDataArray, // Spending data
-    angleField: "value",     // Slice size based on value
-    colorField: "category",  // Color differentiation based on category
+    data: spendingDataArray,
+    angleField: "value",
+    colorField: "category",
     color: [
-      "#FF6384", // Red
-      "#36A2EB", // Blue
-      "#FFCE56", // Yellow
-      "#4BC0C0", // Teal
-      "#9966FF", // Purple
-      "#FF9F40", // Orange
-    ], // Custom colors for slices
+      "#FF6384",
+      "#36A2EB",
+      "#FFCE56",
+      "#4BC0C0",
+      "#9966FF",
+      "#FF9F40",
+    ],
     legend: {
-      position: "right", // Legend position for better UI
+      position: "right",
     },
     label: {
-      type: "outer", // Label outside the pie
-      content: "{name}: {percentage}", // Format label content
+      type: "outer",
+      content: "{name}: {percentage}",
     },
   };
-  
 
   function reset() {
     console.log("resetting");
   }
+
   const cardStyle = {
     boxShadow: "0px 0px 30px 8px rgba(227, 227, 227, 0.75)",
     margin: "2rem",
@@ -297,8 +279,8 @@ const Dashboard = () => {
 
                 <Card bordered={true} style={{ ...cardStyle, flex: 0.45 }}>
                   <h2>Total Spending</h2>
-                  {spendingDataArray.length == 0 ? (
-                    <p>Seems like you haven't spent anything till now...</p>
+                  {spendingDataArray.length === 0 ? (
+                    <p>Seems like you haven't spent anything yet...</p>
                   ) : (
                     <Pie {...{ ...spendingConfig, data: spendingDataArray }} />
                   )}

@@ -102,7 +102,7 @@ const TransactionSearch = ({
   return (
     <div
       style={{
-        width: "100%",
+        width: "95%",
         padding: "0rem 2rem",
       }}
     >

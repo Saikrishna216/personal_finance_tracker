@@ -1,6 +1,6 @@
 .navbar {
     position: sticky;
-    width: 100%;
+    width: 1470px;
     padding: 0.75rem 1.5rem;
     background-color: var(--theme);
     display: flex;
