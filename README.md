@@ -21,7 +21,7 @@ This is a clean and straightforward website designed to help students track thei
 - Responsive Design(Applicable for all devices)
 - User authentication(Sign in even using google accounts)
 - Graphical represation of expenses
-- Easy to enter transactions![1](https://github.com/user-attachments/assets/adeec94b-98a6-411f-951e-e650f1176181)
+- Easy to enter transactions
 
 
 ## Technologies Used
@@ -54,11 +54,16 @@ scroll down , there is transaction search and sort transaction buttons.
 
 ## Screenshots
 
-![Screenshot 1](path/to/screenshot1.png)
-*Caption for the screenshot.*
+![1](https://github.com/user-attachments/assets/adeec94b-98a6-411f-951e-e650f1176181)
+*Dashboard page*
 
-![Screenshot 2](path/to/screenshot2.png)
-*Caption for the screenshot.*
+
+![2](https://github.com/user-attachments/assets/9170f3e5-7da1-47e4-8db2-a33171b7c16e)
+
+*Sign up*
+
+![3](https://github.com/user-attachments/assets/21269c62-ef2b-4624-a685-3fcca706a924)
+*Log in page*
 
 ---
 
