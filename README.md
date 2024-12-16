@@ -41,9 +41,9 @@ This is a clean and straightforward website designed to help students track thei
 Should have node and react
 
 ### Steps to run the project
-Step 1: In your terminal run "npm install".
-Step 2: Run "npm install antd @ant-design/charts moment react-firebase-hooks react-toastify papaparse @ant-design/icons" for installling some additional frameworks.
-Step 3: Finally execute using "npm start".
+-Step 1: In your terminal run "npm install".
+-Step 2: Run "npm install antd @ant-design/charts moment react-firebase-hooks react-toastify papaparse @ant-design/icons" for installling some additional frameworks.
+-Step 3: Finally execute using "npm start".
 
 ## Usage
 
