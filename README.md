@@ -2,7 +2,7 @@
 
 # Money Manager (krishnaksai216)
 
-This is a clean and straightforward website designed to help students track their expenses. It is built using React with Ant Design frameworks and utilizes Firebase for database management.
+- This is a clean and straightforward website designed to help students track their expenses. It is built using React with Ant Design frameworks and utilizes Firebase for database management.
 ---
 
 ## Table of Contents
