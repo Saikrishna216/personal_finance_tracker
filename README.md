@@ -2,10 +2,7 @@
 
 # Money Manager (krishnaksai216)
 
-A brief description of your website goes here. For example:
-
-> "A modern, responsive website built for [purpose/target audience]. This project demonstrates best practices in web development using [technologies/frameworks used]."
-
+This is a clean and straightforward website designed to help students track their expenses. It is built using React with Ant Design frameworks and utilizes Firebase for database management.
 ---
 
 ## Table of Contents
@@ -21,34 +18,37 @@ A brief description of your website goes here. For example:
 
 ## Features
 
-- [Feature 1] (e.g., Responsive design)
-- [Feature 2] (e.g., User authentication)
-- [Feature 3] (e.g., Dynamic content rendering)
-- [Feature 4] (e.g., SEO-friendly structure)
+- Responsive Design(Applicable for all devices)
+- User authentication(Sign in even using google accounts)
+- Graphical represation of expenses
+- Easy to enter transactions![1](https://github.com/user-attachments/assets/adeec94b-98a6-411f-951e-e650f1176181)
+
 
 ## Technologies Used
 
-- **Frontend**: [HTML, CSS, JavaScript, React, Vue.js, Angular, or other frameworks]
-- **Backend**: [Node.js, Django, Flask, Ruby on Rails, ASP.NET, or others]
-- **Database**: [MongoDB, MySQL, PostgreSQL, Firebase, or others]
-- **Styling**: [Tailwind CSS, Bootstrap, SCSS, Material UI, or others]
-- **APIs**: [REST, GraphQL, or custom APIs]
-- **Hosting**: [Vercel, Netlify, Heroku, AWS, Azure, or other platforms]
+- **Frontend**: React,HTML,CSS,JS
+- **Backend**: Node.js
+- **Database**: Firebase
+- **Styling**: Ant
+- **APIs**: Axios
+- **Hosting**: Netlify
 
 ---
 
 ## Installation
 
 ### Prerequisites
-[Add the prerequisites to run the website here]
+Should have node and react
 
 ### Steps to run the project
-[Add the instructions to run the website here]
+Step 1: In your terminal run "npm install".
+Step 2: Run "npm install antd @ant-design/charts moment react-firebase-hooks react-toastify papaparse @ant-design/icons" for installling some additional frameworks.
+Step 3: Finally execute using "npm start".
 
 ## Usage
 
-1. Describe how to use your website, e.g., "Navigate to the home page, log in, and explore various features like [feature examples]."
-2. Provide any credentials if applicable for testing (e.g., demo accounts).
+The website has a sign up page at a start , where we can go to log in page below the sign up with google page , after log in there is just a single page where we can add income and add expense and as we
+scroll down , there is transaction search and sort transaction buttons.
 
 ---
 
@@ -64,13 +64,9 @@ A brief description of your website goes here. For example:
 
 ## Contributors
 
-We thank the following people for their contributions to this project:
 
-- **[Name 1]** - [GitHub Profile](https://github.com/name1)
-- **[Name 2]** - [GitHub Profile](https://github.com/name2)
-- **[Name 3]** - [GitHub Profile](https://github.com/name3)
+- **Sai Krishna K** - [Saikrishna216](https://github.com/Saikrishna216)
 
-Feel free to add your name if you contribute to this project during the Build-A-Site hackathon!
 
 ---
 
@@ -78,7 +74,6 @@ Feel free to add your name if you contribute to this project during the Build-A-
 
 For any inquiries or feedback, reach out to:
 
-- **Your Name**
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [github.com/your-username](https://github.com/your-username)
-- **Website**: [your-website.com](https://your-website.com)
+- **Sai Krishna**
+- **Email**: [krishnaksai216@gmail.com](mailto:krishnaksai216@gmail.com)
+- **GitHub**: [github.com/Saikrishna216](https://github.com/Saikrishna216)
