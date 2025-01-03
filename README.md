@@ -1,6 +1,6 @@
 
 
-# Money Manager (krishnaksai216)
+# Money Manager (A Personal Finance Tracker)
 
 >This is a clean and straightforward website designed to help students track their expenses. It is built using React with Ant Design frameworks and utilizes Firebase for database management.
 ---
