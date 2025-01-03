@@ -1,6 +1,7 @@
 
 
-# Money Manager (A Personal Finance Tracker)
+# Money Manager (A Personal Finance Tracker)![image](https://github.com/user-attachments/assets/5730f64f-69b7-4560-ac83-1e39a56429a7)
+
 
 >This is a clean and straightforward website designed to help students track their expenses. It is built using React with Ant Design frameworks and utilizes Firebase for database management.
 ---
