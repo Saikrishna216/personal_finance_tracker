@@ -1,4 +1,4 @@
-![Build-A-Site](https://i.imgur.com/nZPQ9If.png)
+
 
 # Money Manager (krishnaksai216)
 
